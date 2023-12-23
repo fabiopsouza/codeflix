@@ -1,12 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-import Button from '@mui/material/Button';
+import "./App.css";
+import { createTheme } from "@mui/material";
+import { Box, ThemeProvider } from "@mui/system";
+import { Layout } from "./components/Layout";
+import { Header } from "./components/Header";
+
+const theme = createTheme({});
 
 function App() {
   return (
-    <Button variant="text">Text</Button>
+    <ThemeProvider theme={theme}>
+      <Box
+        component="main"
+        sx={{
+          height: "100vh",
+          // backgroundColor: "#000",
+        }}
+      >
+        <Header
+          toggle={() => {
+            alert("teste");
+          }}
+          theme={""}
+        />
+        <Layout>
+          <h1>teste</h1>
+        </Layout>
+      </Box>
+    </ThemeProvider>
   );
 }
 
