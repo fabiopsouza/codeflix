@@ -1,24 +1,27 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks";
-import { selectCategories } from "./categorySlice";
+import { useAppDispatch } from "../../app/hooks";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { enqueueSnackbar } from "notistack";
 import {
   DataGrid,
   GridColDef,
   GridRenderCellParams,
   GridToolbar
 } from "@mui/x-data-grid";
+import { useGetCategoriesQuery } from "./categorySlice";
+import { Results } from "../../types/Category";
 
 export const CategoryList = () => {
+  // const dispatch = useAppDispatch();
+  const { data, isFetching, error } = useGetCategoriesQuery({});
+
   const componentProps = {
     toolbar: {
       showQuickFilter: true,
       quickFilterProps: { debounceMs: 500 },
     },
   };
-
-  const categories = useAppSelector(selectCategories);
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", flex: 1, renderCell: renderNameCell },
@@ -38,11 +41,26 @@ export const CategoryList = () => {
     },
   ];
 
+function mapDataToGridRows(data: Results) {
+    const { items: categories } = data;
+    return categories.map((category) => ({
+      id: category.id,
+      name: category.name,
+      isActive: category.is_active,
+      created_at: new Date(category.created_at).toLocaleDateString("pt-BR"),
+    }));
+  }
+
+  async function handleDeleteCategory(id: string) {
+    // dispatch(deleteCategory(id));
+    enqueueSnackbar('Success deleted category!', { variant: 'success' });
+  }
+
   function renderActionsCell(params: GridRenderCellParams) {
     return (
       <IconButton
-        color="secondary"
-        onClick={() => alert('delete action')}
+      onClick={() => handleDeleteCategory(params.value)}
+      color="secondary"
         aria-label="delete"
         data-testid="delete-button"
       >
@@ -70,6 +88,13 @@ export const CategoryList = () => {
     );
   }
 
+  const rows = data ? mapDataToGridRows(data) : [];
+  
+  setTimeout(function() {
+    console.log('rows', rows);
+    console.log('error', error);
+  }, 2000);
+  
   return (
     <Box maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Box display="flex" justifyContent="flex-end">
@@ -85,7 +110,7 @@ export const CategoryList = () => {
       </Box>
       <Box sx={{ display: "flex", height: 600 }}>
         <DataGrid
-          rows={categories}
+          rows={[]}
           columns={columns}
           initialState={{
             pagination: {
