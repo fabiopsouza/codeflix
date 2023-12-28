@@ -2,22 +2,17 @@ import { CastMember } from "./CastMembers";
 import { Category } from "./Category";
 import { Genre } from "./Genres";
 
+export interface Results {
+  current_page: number;
+  per_page: number;
+  total: number;
+  items: Video[];
+}
+
 export type FileObject = {
   name: string;
   file: File;
 };
-
-export interface Results {
-  data: Video[];
-  links: Links;
-  meta: Meta;
-}
-
-export interface Result {
-  data: Video;
-  links: Links;
-  meta: Meta;
-}
 
 export interface Video {
   id: string;
@@ -37,23 +32,6 @@ export interface Video {
   banner_file_url: string;
   trailer_file_url: string;
   video_file_url: string;
-}
-
-export interface Links {
-  first: string;
-  last: string;
-  prev: null;
-  next: string;
-}
-
-export interface Meta {
-  to?: number;
-  from?: number;
-  path?: string;
-  total?: number;
-  per_page?: number;
-  last_page?: number;
-  current_page?: number;
 }
 
 export interface VideoParams {
