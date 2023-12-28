@@ -12,7 +12,7 @@ import { GridFilterModel } from "@mui/x-data-grid";
 
 export const CategoryList = () => {
   const [options, setOptions] = useState({
-    page: 1,
+    page: 0,
     search: "",
     perPage: 10,
     rowsPerPage: [10, 20, 30],
