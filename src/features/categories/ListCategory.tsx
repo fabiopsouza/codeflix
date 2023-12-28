@@ -17,12 +17,12 @@ export const CategoryList = () => {
     perPage: 10,
     rowsPerPage: [10, 20, 30],
   });
-  const { data, isFetching, error } = useGetCategoriesQuery({});
+  const { data, isFetching, error } = useGetCategoriesQuery(options);
   const [deleteCategory, { error: deleteError, isSuccess: deleteSuccess }] =
     useDeleteCategoryMutation();
 
   function handleOnPageChange(page: number) {
-    setOptions({ ...options, page: page + 1 });
+    setOptions({ ...options, page });
   }
 
   function handleOnPageSizeChange(perPage: number) {

@@ -41,7 +41,7 @@ export function CategoriesTable({
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", flex: 1, renderCell: renderNameCell },
     {
-      field: "is_active",
+      field: "isActive",
       headerName: "Active",
       flex: 1,
       type: "boolean",
