@@ -15,6 +15,7 @@ export interface Genre {
   created_at: string;
   updated_at: string;
   categories?: Category[];
+  categories_id?: string[];
   description?: null | string;
   pivot?: Pivot;
 }
