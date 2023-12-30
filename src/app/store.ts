@@ -9,12 +9,14 @@ import { apiSlice } from "../features/api/apiSlice";
 import { categoriesApiSlice } from '../features/categories/categorySlice';
 import { castMembersApiSlice } from "../features/cast/castMembersSlice";
 import { genreSlice } from "../features/genre/genreSlice";
+import { videosSlice } from "../features/videos/VideoSlice";
 
 const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
   [categoriesApiSlice.reducerPath]: apiSlice.reducer,
   [castMembersApiSlice.reducerPath]: apiSlice.reducer,
   [genreSlice.reducerPath]: apiSlice.reducer,
+  [videosSlice.reducerPath]: apiSlice.reducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
