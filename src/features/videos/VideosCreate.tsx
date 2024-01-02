@@ -14,6 +14,7 @@ import {
   useGetAllCategoriesQuery,
   useGetAllGenresQuery,
 } from "./VideoSlice";
+import { addUpload } from "../uploads/UploadSlice";
 
 export const VideosCreate = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -40,7 +41,7 @@ export const VideosCreate = () => {
   function handleSubmitUploads(videoId: string) {
     selectedFiles.forEach(({ file, name }) => {
       const payload = { id: nanoid(), file, videoId, field: name };
-      // dispatch(addUpload(payload));
+      dispatch(addUpload(payload));
     });
   }
 
@@ -64,9 +65,6 @@ export const VideosCreate = () => {
       enqueueSnackbar(`Error creating Video`, { variant: "error" });
     }
   }, [status, enqueueSnackbar]);
-
-  console.log('videoState', videoState);
-  // console.log('initialState', initialState);
 
   return (
     <Box>

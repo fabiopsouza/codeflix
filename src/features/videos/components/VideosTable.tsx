@@ -48,18 +48,18 @@ export function VideosTable({
       flex: 1,
       renderCell: renderNameCell,
     },
-    {
-      field: "genres",
-      headerName: "Genres",
-      flex: 1,
-      renderCell: renderGenresCell,
-    },
-    {
-      field: "categories",
-      headerName: "Categories",
-      flex: 1,
-      renderCell: renderCategoriesCell,
-    },
+    // {
+    //   field: "genres",
+    //   headerName: "Genres",
+    //   flex: 1,
+    //   renderCell: renderGenresCell,
+    // },
+    // {
+    //   field: "categories",
+    //   headerName: "Categories",
+    //   flex: 1,
+    //   renderCell: renderCategoriesCell,
+    // },
     {
       field: "id",
       headerName: "Actions",
