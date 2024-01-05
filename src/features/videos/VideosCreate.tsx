@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { FileObject, Video } from "../../types/Videos";
-// import { addUpload } from "../uploads/UploadSlice";
+import { addUpload } from "../uploads/UploadSlice";
 import { VideosForm } from "./components/VideosForm";
 import { mapVideoToForm } from "./util";
 import {
@@ -14,7 +14,6 @@ import {
   useGetAllCategoriesQuery,
   useGetAllGenresQuery,
 } from "./VideoSlice";
-import { addUpload } from "../uploads/UploadSlice";
 
 export const VideosCreate = () => {
   const { enqueueSnackbar } = useSnackbar();

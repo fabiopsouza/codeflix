@@ -3,13 +3,11 @@ import { baseUrl } from "../api/apiSlice";
 
 export const API_ENDPOINT = `${baseUrl}/videos`;
 
-export const getEndpoint = (id: string) => `${API_ENDPOINT}/${id}`;
+export const getEndpoint = (id: string, type: string) => `${API_ENDPOINT}/${id}/medias/${type}`;
 
-export const formdata = (field: string, file: File) => {
+export const formdata = (file: File) => {
   const data = new FormData();
-  data.append(field, file);
-  data.append("_method", "PATCH");
-  data.append("Content-Type", "multipart/form-data");
+  data.append('media_file', file);
   return data;
 };
 
@@ -28,8 +26,8 @@ export const uploadService = (params: {
   onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
 }) => {
   const { field, file, videoId, onUploadProgress } = params;
-  const endpoint = getEndpoint(videoId);
-  const data = formdata(field, file);
+  const endpoint = getEndpoint(videoId, field);
+  const data = formdata(file);
 
   return axios.post(endpoint, data, { onUploadProgress });
 };

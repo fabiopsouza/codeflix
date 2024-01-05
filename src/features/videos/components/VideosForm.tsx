@@ -41,36 +41,37 @@ export function VideosForm({
   handleAddFile,
   handleRemoveFile,
 }: Props) {
+
   const handleAddThumbnail = (file: File) => {
-    handleAddFile({ name: "thumb_file", file });
+    handleAddFile({ name: "THUMBNAIL", file });
   };
 
   const handleRemoveThumbnail = () => {
-    handleRemoveFile("thumb_file");
+    handleRemoveFile("THUMBNAIL");
   };
 
   const handleAddBanner = (file: File) => {
-    handleAddFile({ name: "banner_file", file });
-  };
-
-  const handleAddTrailer = (file: File) => {
-    handleAddFile({ name: "trailer_file", file });
-  };
-
-  const handleAddVideo = (file: File) => {
-    handleAddFile({ name: "video_file", file });
+    handleAddFile({ name: "BANNER", file });
   };
 
   const handleRemoveBanner = () => {
-    handleRemoveFile("banner_file");
+    handleRemoveFile("BANNER");
+  };
+
+  const handleAddTrailer = (file: File) => {
+    handleAddFile({ name: "TRAILER", file });
   };
 
   const handleRemoveTrailer = () => {
-    handleRemoveFile("trailer_file");
+    handleRemoveFile("TRAILER");
+  };
+
+  const handleAddVideo = (file: File) => {
+    handleAddFile({ name: "VIDEO", file });
   };
 
   const handleRemoveVideo = () => {
-    handleRemoveFile("video_file");
+    handleRemoveFile("VIDEO");
   };
 
   return (

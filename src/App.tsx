@@ -15,12 +15,13 @@ import { GenreEdit } from "./features/genre/GenreEdit";
 import { VideosCreate } from "./features/videos/VideosCreate";
 import { VideosEdit } from "./features/videos/VideosEdit";
 import { VideosList } from "./features/videos/VideosList";
+import { UploadList } from "./features/uploads/UploadList";
 
 function App() {
   return (
     <div data-testid="app">
       <Layout>
-        {/* <UploadList /> */}
+        <UploadList />
         <Routes>
           <Route path="/" element={<CategoryList />} />
 

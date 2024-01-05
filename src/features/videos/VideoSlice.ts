@@ -72,7 +72,7 @@ function updateVideo(video: VideoPayload) {
     body: video,
   };
 }
-function createVideo(video: VideoPayload) {
+function createVideo(video: VideoPayload) {  
   return {
     url: endpointUrl,
     method: "POST",

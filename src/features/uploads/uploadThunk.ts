@@ -7,12 +7,14 @@ export const updateVideo = createAsyncThunk(
   "uploads/uploadVideo",
   async ({ videoId, id, file, field }: UploadState, thunkAPI) => {
     const onUploadProgress = (progressEvent: AxiosProgressEvent) => {
+      console.log('onUploadProgress', progressEvent);
       const progress = uploadProgress(progressEvent);
       thunkAPI.dispatch(setUploadProgress({ id, progress }));
     };
 
     try {
       const params = { videoId, id, file, field, onUploadProgress };
+      console.log('createAsyncThunk', params);
       const response = await uploadService(params);
       return response;
     } catch (error) {

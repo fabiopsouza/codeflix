@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FileObject, Video } from "../../types/Videos";
 import { VideosForm } from "./components/VideosForm";
-import { mapVideoToForm } from "./util";
+import { mapVideoSlices, mapVideoToForm } from "./util";
 import {
   initialState,
   useGetAllCastMembersQuery,
@@ -43,10 +43,10 @@ export function VideosEdit() {
   }
 
   useEffect(() => {
-    if (video) {
-      setVideoState(video);
+    if (video && genres && castMembers && categories) {
+      setVideoState(mapVideoSlices(video, genres, castMembers, categories));
     }
-  }, [video]);
+  }, [video, genres, castMembers, categories]);
 
   useEffect(() => {
     if (status.isSuccess) {
